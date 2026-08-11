@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+  --bg:     #0a0e1a;
+  --card:   #0f1629;
+  --border: #1a2744;
+  --accent: #00f5d4;
+  --blue:   #0066ff;
+  --purple: #7b2fff;
+  --red:    #ff2d55;
+  --yellow: #ffd60a;
+  --green:  #30d158;
+}
+
+/* ─── Reset & Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+#root{
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: #e2e8f0;
+  font-family: 'Rajdhani', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+/* ─── Typography helpers ────────────────────────────────────────────────────── */
+.font-cyber      { font-family: 'Orbitron',        monospace; }
+.font-mono-cyber { font-family: 'Share Tech Mono', monospace; }
+
+/* ─── Background Grid ───────────────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ─── Glow effects ──────────────────────────────────────────────────────────── */
+.glow-text { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
+.glow-blue { text-shadow: 0 0 10px var(--blue),   0 0 20px var(--blue); }
+
+/* ─── Cyber Card ────────────────────────────────────────────────────────────── */
+.cyber-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.cyber-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+.cyber-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cyber-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 20px rgba(0,245,212,0.4);
+}
+
+.cyber-btn-primary {
+  background: linear-gradient(135deg, #0066ff, #7b2fff);
+  border: none;
+  color: #fff;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cyber-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,102,255,0.4);
+}
+.cyber-btn-primary:disabled,
+.cyber-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Input ─────────────────────────────────────────────────────────────────── */
+.cyber-input {
+  background: rgba(26,39,68,0.6);
+  border: 1px solid var(--border);
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.cyber-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,245,212,0.12);
+}
+.cyber-input option { background: var(--card); }
+
+/* ─── Progress bar ──────────────────────────────────────────────────────────── */
+.progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--blue));
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* ─── Badges ────────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.badge-green  { background: rgba(48,209,88,0.15);  border: 1px solid rgba(48,209,88,0.4);  color: #30d158; }
+.badge-red    { background: rgba(255,45,85,0.15);   border: 1px solid rgba(255,45,85,0.4);  color: #ff2d55; }
+.badge-yellow { background: rgba(255,214,10,0.15);  border: 1px solid rgba(255,214,10,0.4); color: #ffd60a; }
+.badge-blue   { background: rgba(0,102,255,0.15);   border: 1px solid rgba(0,102,255,0.4);  color: #0066ff; }
+.badge-purple { background: rgba(123,47,255,0.15);  border: 1px solid rgba(123,47,255,0.4); color: #7b2fff; }
+
+/* ─── Sidebar nav links ─────────────────────────────────────────────────────── */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.18s;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+}
+.sidebar-link:hover {
+  background: rgba(0,245,212,0.07);
+  color: var(--accent);
+}
+.sidebar-link.active {
+  background: rgba(0,245,212,0.11);
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+/* ─── Swipe card ────────────────────────────────────────────────────────────── */
+.swipe-card {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ─── Scanline ──────────────────────────────────────────────────────────────── */
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scanline {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,245,212,0.25), transparent);
+  animation: scanline 5s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Terminal flicker ──────────────────────────────────────────────────────── */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.82; }
+}
+.terminal-text {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--accent);
+  animation: flicker 2.5s ease-in-out infinite;
+}
+
+/* ─── Float animation ───────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+/* ─── Line clamp ────────────────────────────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
